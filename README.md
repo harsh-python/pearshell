@@ -1,2 +1,6 @@
 # pearshell
-A New Python Shell By Harshbir SIngh
+A New Python Shell By Harshbir Singh.
+In This Shell you can do same things as in python's default shell.
+But if you are making functions or for loops,while loops you have to make indentation by you self by tab key on your keyboard...
+Happy Coding.....
+~Harshbir Singh
