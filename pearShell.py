@@ -1,5 +1,4 @@
 import os
-from pearShell import load
 import time
 import pyttsx3 
 import json
