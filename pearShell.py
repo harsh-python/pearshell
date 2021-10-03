@@ -26,6 +26,8 @@ By: Harhbir Singh
         self.file_data = json.loads(self.data)
         self.name = self.file_data["username"]
         self.passd = self.file_data["password"]
+##        print(self.name)
+##        print(self.passd)
 
     def speak(self,audio):
         self.engine.say(audio)
@@ -34,37 +36,12 @@ By: Harhbir Singh
 
     # setup
     ##############################################################
-    def setup_default(self):
-        user_d = "pearshell123"
-        self.pass_d = 1234
-        # ///THIS IS FOR THE PEAR SHELL///
-        self.file1 = open("set.json",'r')
-        self.data1 = self.file1.read()
-        self.file1.close()
-
-        self.file_data1 = json.loads(self.data1)
-        name = self.file_data1["username"]
-        passd = self.file_data1["password"]
-        # print(name)
-        self.v = {
-            "username":self.user_d,
-            "password":self.pass_d
-        }
-        self.file_data2 = json.dumps(self.v)
-        # print(name_data)
-        self.file2 = open("set.json",'w')
-        self.data2 = self.file2.write(self.file_data2)
-        self.file2.close()
-        print("""
-        YOUR DEFAULT USERNAME AND PASSWORD IS:
-        USERNAME : programmator@pear
-        PASSWORD : 1234
-        """)
-    
-    def setup_acc(self):
+    def setup(self,e):
+        self.root.destroy()
+        os.system('attrib -s -h -r set.json')
+        self.speak("Welcome To Pear Shell Setup")
         self.username = input("Enter Your Username For Pear Shell: ")
         self.password = getpass("Enter Your User Account Password: ")
-        # ///THIS IS FOR THE PEAR SHELL///
         self.file3 = open("set.json",'r')
         self.data3 = self.file3.read()
         self.file3.close()
@@ -72,34 +49,19 @@ By: Harhbir Singh
         self.file_data3 = json.loads(self.data3)
         self.name = self.file_data3["username"]
         self.passd = self.file_data3["password"]
-        # print(name)
         self.v2 = {
             "username":self.username,
             "password":self.password
         }
         self.file_data3 = json.dumps(self.v2)
-        # print(name_data)
         self.file4 = open("set.json",'w')
         self.data4 =self.file4.write(self.file_data3)
         self.file4.close()
-
-    def setup(self,e):
-        self.root.destroy() # destroy root
-        self.speak("Welcome To Pear Shell Setup")
-        self.speak("Do You Want To Setup A Account Or Use Default Account")
-        print("""
-        [1]: Setup Account
-        [2]: Default Account
-        """)
-        self.option = int(input("ENTER YOUR CHOICE: "))
-        if self.option == 1:
-            self.setup_acc()
-        elif self.option == 2:
-            self.setup_default()
         time.sleep(2)
         self.speak("Your Account Is Setup!")
         self.speak("You Can Now Use Pear Shell")
         os.startfile('pearShell.py')
+        os.system('attrib +s +h +r set.json')
         exit() 
     ##############################################################
     # main terminal
@@ -128,9 +90,36 @@ By: Harhbir Singh
             elif self.x == "help":
                 self.speak("To Exit Type: exit()")
                 self.speak("For About: about_ter")
+                self.speak("To open Setup: set_ter")
                 # speak("To Uninstall The Python Shell: uninstall_ter")
             elif self.x == 'about_ter':
                 messagebox.showinfo("About", self.about)
+            elif self.x == 'set_ter':
+                os.system('attrib -s -h -r set.json')
+                self.speak("Welcome To Pear Shell Setup")
+                self.username = input("Enter Your Username For Pear Shell: ")
+                self.password = getpass("Enter Your User Account Password: ")
+                self.file3 = open("set.json",'r')
+                self.data3 = self.file3.read()
+                self.file3.close()
+
+                self.file_data3 = json.loads(self.data3)
+                self.name = self.file_data3["username"]
+                self.passd = self.file_data3["password"]
+                self.v2 = {
+                    "username":self.username,
+                    "password":self.password
+                }
+                self.file_data3 = json.dumps(self.v2)
+                self.file4 = open("set.json",'w')
+                self.data4 =self.file4.write(self.file_data3)
+                self.file4.close()
+                time.sleep(2)
+                self.speak("Your Account Is Setup!")
+                self.speak("You Can Now Use Pear Shell")
+                os.startfile('pearShell.py')
+                os.system('attrib +s +h +r set.json')
+                exit()
             # elif x == "uninstall_ter":
             #     os.remove('python_shell.py')
             #     exit()
@@ -189,6 +178,7 @@ By: Harhbir Singh
         self.root.mainloop()
 
 if __name__ == "__main__":
+    os.system('attrib +s +h +r set.json')
     var = Pearshell()
     var.load()
           
