@@ -387,7 +387,7 @@ By: Harhbir Singh
         self.text_scroll2.pack(side=BOTTOM, fill=X)
 
         # create text box
-        self.my_text = Text(self.my_frame, width=122, height=29, font=("Courier New", 14,"bold"), foreground="black", selectbackground="gray", selectforeground="blue", undo=True, yscrollcommand=self.text_scroll.set, xscrollcommand=self.text_scroll2.set, wrap="none")
+        self.my_text = Text(self.my_frame, width=120, height=28, font=("Courier New", 14,"bold"), foreground="black", selectbackground="gray", selectforeground="blue", undo=True, yscrollcommand=self.text_scroll.set, xscrollcommand=self.text_scroll2.set, wrap="none")
         self.my_text.pack()
 
         # Configuring scrollbar
@@ -461,6 +461,8 @@ if __name__ == "__main__":
     os.system('attrib +s +h +r set.json')
     var = Pearshell()
     var.load()
+          
+
           
 
           
